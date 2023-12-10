@@ -41,3 +41,9 @@ export function formatDate(input: string | number | Date): string {
     year: 'numeric'
   })
 }
+
+export function camelCaseToCapitalized(str: string)  {
+  return str
+      .replace(/([A-Z])/g, ' $1')
+      .replace(/^./, function(str) { return str.toUpperCase(); })
+}
