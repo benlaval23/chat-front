@@ -11,7 +11,7 @@ export function Output({ className }: OutputProps) {
   return (
     <>
       <div className={cn('pb-[200px] mx-auto md:pt-10', className)}>
-        <List/>
+        <Item/>
       </div>
     </>
   )

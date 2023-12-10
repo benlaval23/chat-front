@@ -6,35 +6,30 @@ import { IconArrowRight } from '@/components/ui/icons'
 
 const exampleMessages = [
   {
-    heading: 'Explain technical concepts',
-    message: `What is a "serverless function"?`
+    heading: 'Can I please see the following user details...',
+    message: `Can I please see the following user details...`
   },
   {
-    heading: 'Summarize an article',
-    message: 'Summarize the following article for a 2nd grader: \n'
+    heading: 'Update x user name to y',
+    message: 'Update x user name to y'
   },
   {
-    heading: 'Draft an email',
-    message: `Draft an email to my boss about the following: \n`
+    heading: 'Send a product summary to x user',
+    message: `Send a product summary to x users`
   }
 ]
 
 interface EmptyScreenProps {
   setInput: UseChatHelpers['setInput']; // Assuming setInput is a function in UseChatHelpers
-  type: string; // Separate type prop, not part of UseChatHelpers
 }
 
-export function EmptyScreen({ setInput, type }: EmptyScreenProps)  {
+export function EmptyScreen({ setInput }: EmptyScreenProps)  {
   return (
     <div className="mx-auto max-w-2xl px-4">
       <div className="rounded-lg border bg-background p-8">
-        {type === 'output' ? (
-          <h1 className="mb-2 text-lg font-semibold">Output</h1>
-        ) : (
-          <h1 className="mb-2 text-lg font-semibold">Chat</h1>
-        )}
+          <h1 className="mb-2 text-lg font-semibold">Chat Front</h1>
         <p className="mb-2 leading-normal text-muted-foreground">
-          This is an open source AI chatbot app template built with.
+          Use this chat bot to view and edit your data
         </p>
         <p className="leading-normal text-muted-foreground">
           You can start a conversation here or try the following examples:

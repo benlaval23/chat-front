@@ -118,3 +118,8 @@ export async function shareChat(chat: Chat) {
 
   return payload
 }
+
+
+export async function hello() {
+  return 'hello'
+}
