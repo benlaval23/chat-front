@@ -42,47 +42,49 @@ export function List({ className }: ListProps) {
   const keys = firstThreeData.length > 0 ? Object.keys(firstThreeData[0]) : []
 
   return (
-    <div
-      className={cn(
-        'overflow-hidden bg-white sm:rounded-lg shadow ring-1 ring-black ring-opacity-5',
-        className
-      )}
-    >
-      <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg">
-        <table className="min-w-full divide-y divide-gray-300">
-          <thead className="bg-gray-50">
-            <tr>
-              {keys.map(key => (
-                <th
-                  key={key}
-                  scope="col"
-                  className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-                >
-                  {camelCaseToCapitalized(key)}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-gray-200 bg-white">
-            {firstThreeData.map((item, index) => (
-              <>
-                <tr key={index}>
-                  {keys.map(key => (
-                    <td
-                      key={key}
-                      className="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                    >
-                      {item[key]}
-                    </td>
-                  ))}
-
-                  {length > 3 && <OutputButton name="See More" />}
-                </tr>
-              </>
-            ))}
-          </tbody>
-        </table>
+    <div className={cn('rounded-lg border bg-background', className)}>
+      <div className="px-4 py-6 sm:px-6 bg-gray-50 ">
+        <h1 className="mb-2 text-lg font-semibold">Users</h1>
+        <p className="mt-1 max-w-2xl leading-normal text-muted-foreground">
+          Here is a list of your users.
+        </p>
       </div>
+      <table className="min-w-full divide-y divide-gray-300">
+        <thead className="bg-gray-50">
+          <tr>
+            {keys.map(key => (
+              <th
+                key={key}
+                scope="col"
+                className="text-sm font-medium text-primary"
+              >
+                {camelCaseToCapitalized(key)}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-gray-200 bg-white">
+          {firstThreeData.map((item, index) => (
+            <>
+              <tr key={index}>
+                {keys.map(key => (
+                  <td
+                    key={key}
+                    className="whitespace-nowrap px-3 py-4 text-muted-foreground"
+                  >
+                    {item[key]}
+                  </td>
+                ))}
+
+                {length > 3 && (
+                  
+                <OutputButton name="See More" />
+              )}
+              </tr>
+            </>
+          ))}
+        </tbody>
+      </table>
     </div>
   )
 }
