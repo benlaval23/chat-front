@@ -4,29 +4,13 @@ import { camelCaseToCapitalized } from '@/lib/utils'
 import { Field } from '@/components/ui/field'
 
 export interface ItemProps extends React.ComponentProps<'div'> {
-  className?: string
+  className?: string,
+  output?: object,
 }
 
 const objectName = 'Product'
 
-const dummyItem = {
-  id: '1',
-  name: 'Item 1',
-  description:
-    'This items is a great item and it will be the best item that you will see of all items. You should buy this item.',
-  price: 100,
-  image: 'https://picsum.photos/200/300',
-  tags: ['tag1', 'tag2', 'tag3'],
-  category: [
-    { id: '1', name: 'Category 1' },
-    { id: '2', name: 'Category 2' }
-  ],
-  sold: false,
-  createdAt: '2021-01-01',
-  metaData: { type: 'type1', value: 'value1' }
-}
-
-export function Item({ className }: ItemProps) {
+export function Item({ className, output }: ItemProps) {
   return (
     <>
       <div
@@ -43,7 +27,7 @@ export function Item({ className }: ItemProps) {
         </div>
         <div className="border-t border-gray-100">
           <dl className="divide-y divide-gray-100">
-            {Object.entries(dummyItem).map(([key, value]) => {
+            {Object.entries(output).map(([key, value]) => {
               if (Array.isArray(value)) {
                 return (
                   <Field

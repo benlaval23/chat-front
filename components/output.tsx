@@ -5,13 +5,22 @@ import { List } from '@/components/list';
 
 export interface OutputProps extends React.ComponentProps<'div'> {
   className?: string
+  output?: any
 }
 
-export function Output({ className }: OutputProps) {
+const renderOutput = (output: any) => {
+  if (Array.isArray(output)) {
+    return <List output={output}/>
+  } else {
+    return <Item output={output}/>
+  }
+}
+
+export function Output({ className, output }: OutputProps) {
   return (
     <>
       <div className={cn('pb-[200px] mx-auto md:pt-10', className)}>
-        <Item/>
+        {renderOutput(output)}
       </div>
     </>
   )

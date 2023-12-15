@@ -78,11 +78,11 @@ export async function runFunction(name: string, args: any) {
     case 'getUsersList':
       return await getUsersList()
     case 'getUserProfile':
-      return await getUserProfile(args['userId'])
+      return await getUserProfile(args)
     case 'searchProducts':
-      return await searchProducts(args['query'])
+      return await searchProducts(args)
     case 'getProductDetails':
-      return await getProductDetails(args['productId'])
+      return await getProductDetails(args)
     case 'getProductsList':
       return await getProductsList()
     default:

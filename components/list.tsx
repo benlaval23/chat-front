@@ -4,41 +4,14 @@ import { camelCaseToCapitalized } from '@/lib/utils'
 import { OutputButton } from '@/components/ui/output-button'
 
 export interface ListProps extends React.ComponentProps<'div'> {
-  className?: string
+  className?: string,
+  output?: any
 }
 
-const dummyList = [
-  {
-    name: 'Lindsay Walton',
-    title: 'Front-end Developer',
-    email: 'lindsay.walton@example.com',
-    role: 'Member'
-  },
-  {
-    name: 'Lindsay Walton',
-    title: 'Front-end Developer',
-    email: 'lindsay.walton@example.com',
-    role: 'Member'
-  },
 
-  {
-    name: 'Lindsay Walton',
-    title: 'Front-end Developer',
-    email: 'lindsay.walton@example.com',
-    role: 'Member'
-  },
-
-  {
-    name: 'Lindsay Walton',
-    title: 'Front-end Developer',
-    email: 'lindsay.walton@example.com',
-    role: 'Member'
-  }
-]
-
-export function List({ className }: ListProps) {
-  const length = dummyList.length
-  const firstThreeData = dummyList.slice(0, 3)
+export function List({ className, output }: ListProps) {
+  const length = output.length
+  const firstThreeData = output.slice(0, 3)
   const keys = firstThreeData.length > 0 ? Object.keys(firstThreeData[0]) : []
 
   return (

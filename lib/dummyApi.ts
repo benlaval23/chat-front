@@ -1,54 +1,68 @@
-import axios from 'axios';
-
 const API_BASE_URL = 'https://dummyjson.com';
 
 export const getProductsList = async () => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/products`);
-    return response.data;
+    const response = await fetch(`${API_BASE_URL}/products`);
+    if (!response.ok) throw new Error('Network response was not ok.');
+    return await response.json();
   } catch (error) {
     console.error('Error fetching products list:', error);
     throw error;
   }
 };
 
-export const getProductDetails = async (productId: number) => {
-    try {
-      const response = await axios.get(`${API_BASE_URL}/products/${productId}`);
-      return response.data;
-    } catch (error) {
-      console.error(`Error fetching details for product ${productId}:`, error);
-      throw error;
-    }
-  };
-  
-  export const searchProducts = async (query: string) => {
-    try {
-      const response = await axios.get(`${API_BASE_URL}/products/search?q=${query}`);
-      return response.data;
-    } catch (error) {
-      console.error(`Error searching for products with query "${query}":`, error);
-      throw error;
-    }
-  };
-  
-  export const getUserProfile = async (userId: number) => {
-    try {
-      const response = await axios.get(`${API_BASE_URL}/users/${userId}`);
-      return response.data;
-    } catch (error) {
-      console.error(`Error fetching user profile for user ${userId}:`, error);
-      throw error;
-    }
-  };
-  
-  export const getUsersList = async () => {
-    try {
-      const response = await axios.get(`${API_BASE_URL}/users`);
-      return response.data;
-    } catch (error) {
-      console.error('Error fetching users list:', error);
-      throw error;
-    }
-  };
-  
+export const getProductDetails = async (args: string) => {
+  const obj = JSON.parse(args);
+  const productId = obj.productId
+
+  try {
+    const response = await fetch(`${API_BASE_URL}/products/${productId}`);
+    if (!response.ok) throw new Error('Network response was not ok.');
+    return await response.json();
+  } catch (error) {
+    console.error(`Error fetching details for product ${productId}:`, error);
+    throw error;
+  }
+};
+
+export const searchProducts = async (args: string) => {
+  const obj = JSON.parse(args);
+  const query = obj.query
+
+  try {
+    const response = await fetch(`${API_BASE_URL}/products/search?q=${query}`);
+    if (!response.ok) throw new Error('Network response was not ok.');
+    return await response.json();
+  } catch (error) {
+    console.error(`Error searching for products with query "${query}":`, error);
+    throw error;
+  }
+};
+
+export const getUserProfile = async (args: string) => {
+  const obj = JSON.parse(args);
+  const userId = obj.userId
+
+  console.log(typeof args)
+
+  console.log(`Fetching user profile for user ${userId}`);
+  try {
+    const response = await fetch(`${API_BASE_URL}/users/${userId}`);
+    if (!response.ok) throw new Error('Network response was not ok.');
+    return await response.json();
+  } catch (error) {
+    console.error(`Error fetching user profile for user ${userId}:`, error);
+    throw error;
+  }
+};
+
+export const getUsersList = async () => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/users`);
+    if (!response.ok) throw new Error('Network response was not ok.');
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching users list:', error);
+    throw error;
+  }
+};
