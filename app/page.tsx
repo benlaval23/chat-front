@@ -51,7 +51,7 @@ const output = {
 //   }
 // ]
 
-const tab = 'Flow'
+const tab = 'Set'
 
 export default function IndexPage() {
   const id = nanoid()

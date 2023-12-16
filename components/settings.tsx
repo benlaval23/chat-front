@@ -1,9 +1,10 @@
 'use client'
-import { cn } from '@/lib/utils'
-import React from 'react'
+
+import React, { useState } from 'react'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { IconArrowRight, IconPlus } from '@/components/ui/icons'
+import { SidePanel } from '@/components/side-panel'
 
 export interface SettingsProps extends React.ComponentProps<'div'> {
   className?: string
@@ -21,15 +22,41 @@ const sources = [
 ]
 
 export function Settings({ className }: SettingsProps) {
+  const [showPanel, setShowPanel] = useState(false)
+  const [expandedSource, setExpandedSource] = useState()
+
+  const handleSourceClick = (source) => {
+    setExpandedSource(source)
+  }
+
+  const newSource = () => {
+    const newSource = { name: 'New Source', imagePath: '' }
+    sources.push(newSource)
+    setExpandedSource(newSource)
+  }
+
+  const closePanel = () => {
+    setExpandedSource(null)
+  }
+
+  const cancel = () => {
+    setExpandedSource(null)
+  }
+
   return (
-    <div className={cn('pb-[200px] mx-auto md:pt-10', className)}>
-      <div className="">
-        <h1 className="mb-8 ml-2 text-lg font-semibold text-left">Sources</h1>
+    <div className={className}>
+      <div>
+        <h1 className="mb-8 mt-8 ml-2 text-lg font-semibold text-left">
+          Sources
+        </h1>
       </div>
       {sources.map((source, index) => (
         <React.Fragment key={index}>
-          <div className="w-full mb-4">
-            <div className="rounded-lg h-24 flex items-center justify-between pl-8 items-center border bg-background p-2">
+          <div className="w-full mb-4 ">
+            <div
+              className="rounded-lg h-24 flex items-center justify-between pl-8 items-center border bg-background hover:bg-gray-100 p-2"
+              onClick={() => handleSourceClick(source)}
+            >
               <div className="flex items-center">
                 <Image
                   className="w-6 h-6 transition-opacity duration-300 rounded-full select-none ring-1 ring-zinc-100/10 hover:opacity-80"
@@ -49,15 +76,21 @@ export function Settings({ className }: SettingsProps) {
         </React.Fragment>
       ))}
       <React.Fragment>
-        <div className="w-full mb-4">
-          <div className="rounded-lg h-14 flex justify-center items-center pl-8 border bg-background p-2">
+        <div className="w-full mb-4 ">
+          <div
+            className="rounded-lg h-24 flex items-center justify-end pl-8 items-center border bg-background hover:bg-gray-100 p-2"
+            onClick={() => newSource()}
+          >
             <Button key="Configure" variant="link" size="lg">
-              <IconPlus className="mr-1" />
               New Source
+              <IconPlus className="ml-1" />
             </Button>
           </div>
         </div>
       </React.Fragment>
+      {expandedSource && (
+        <SidePanel source={expandedSource} close={closePanel} cancel={cancel} />
+      )}
     </div>
   )
 }
