@@ -1,7 +1,5 @@
 import { Metadata } from 'next'
-
 import { Toaster } from 'react-hot-toast'
-
 import '@/app/globals.css'
 import { fontMono, fontSans } from '@/lib/fonts'
 import { cn } from '@/lib/utils'
@@ -11,10 +9,10 @@ import { Header } from '@/components/header'
 
 export const metadata: Metadata = {
   title: {
-    default: 'Next.js AI Chatbot',
-    template: `%s - Next.js AI Chatbot`
+    default: 'Chat Front',
+    template: `Chat Front`
   },
-  description: 'An AI-powered chatbot template built with Next.js and Vercel.',
+  description: 'An AI-powered front end for your applicatons.',
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: 'white' },
     { media: '(prefers-color-scheme: dark)', color: 'black' }
@@ -25,6 +23,12 @@ export const metadata: Metadata = {
     apple: '/apple-touch-icon.png'
   }
 }
+
+
+const tabs = [
+  { name: 'Flow'},
+  { name: 'Settings'},
+]
 
 interface RootLayoutProps {
   children: React.ReactNode
@@ -45,7 +49,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <Providers attribute="class" defaultTheme="system" enableSystem>
           <div className="flex flex-col min-h-screen bg-muted/50">
             {/* @ts-ignore */}
-            <Header />
+            <Header tabs={tabs} />
             <main className="container mx-auto p-4">{children}</main>
           </div>
           <TailwindIndicator />

@@ -1,6 +1,7 @@
 import { nanoid } from '@/lib/utils'
 import { Chat } from '@/components/chat'
 import { Output } from '@/components/output'
+import { Settings } from '@/components/settings'
 
 export const runtime = 'edge'
 
@@ -50,14 +51,27 @@ const output = {
 //   }
 // ]
 
+const tab = 'Flow'
 
 export default function IndexPage() {
   const id = nanoid()
 
   return (
     <div className="flex justify-between">
-      <Chat className="left-panel p-4 basis-1/2" id={id} output={output}/>
-      <Output className="right-panel p-4 basis-1/2" id={id} output={output}/>
+      {(tab === 'Flow') ? (
+        <>
+          <Chat className="left-panel p-4 basis-1/2" id={id} output={output} />
+          <Output
+            className="right-panel p-4 basis-1/2"
+            id={id}
+            output={output}
+          />
+        </>
+      ) : (
+        <>
+          <Settings className="w-full w-10/12" />
+        </>
+      )}
     </div>
   )
 }

@@ -46,28 +46,17 @@ export function UserMenu({ user }: UserMenuProps) {
         </DropdownMenuTrigger>
         <DropdownMenuContent sideOffset={8} align="start" className="w-[180px]">
           <DropdownMenuItem className="flex-col items-start">
-            <div className="text-xs font-medium">{user?.name}</div>
-            <div className="text-xs text-zinc-500">{user?.email}</div>
+            <div className="text-s font-medium">{user?.name}</div>
+            <div className="text-s text-zinc-500">{user?.email}</div>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
-          <DropdownMenuItem asChild>
-            <a
-              href="https://vercel.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-between w-full text-xs"
-            >
-              Vercel Homepage
-              <IconExternalLink className="w-3 h-3 ml-auto" />
-            </a>
-          </DropdownMenuItem>
           <DropdownMenuItem
             onClick={() =>
               signOut({
                 callbackUrl: '/'
               })
             }
-            className="text-xs"
+            className="text-s"
           >
             Log Out
           </DropdownMenuItem>
