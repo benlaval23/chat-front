@@ -23,10 +23,11 @@ const fieldVariants = cva(
 export interface FieldProps extends React.ComponentProps<'div'> {
   value?: string
   item: string
-  variant?: string
+  variant?: any
 }
 
 function Field({ item, value, variant }: FieldProps) {
+  
   return (
     <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
       <dt className="text-sm font-medium text-primary">{item}</dt>
