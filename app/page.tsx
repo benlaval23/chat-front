@@ -51,7 +51,7 @@ const output = {
 //   }
 // ]
 
-const tabToShow: "Settings" | "Flow" = 'Flow'
+const tabToShow: "Settings" | "Flow" = 'Settings'
 
 export default function IndexPage() {
   const id = nanoid()
@@ -69,7 +69,7 @@ export default function IndexPage() {
         </>
       ) : (
         <>
-          <Settings className="w-full w-10/12" />
+          <Settings className="w-full" />
         </>
       )}
     </div>
