@@ -51,14 +51,14 @@ const output = {
 //   }
 // ]
 
-const tab: "Settings" | "Flow" = 'Flow'
+const tabToShow: "Settings" | "Flow" = 'Flow'
 
 export default function IndexPage() {
   const id = nanoid()
 
   return (
     <div className="flex justify-between">
-      {(tab === 'Flow') ? (
+      {(tabToShow === 'Flow') ? (
         <>
           <Chat className="left-panel p-4 basis-1/2" id={id} output={output} />
           <Output

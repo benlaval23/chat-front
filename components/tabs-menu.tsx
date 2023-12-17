@@ -1,21 +1,22 @@
 'use client'
 import React, { useState } from 'react'
 import { Button } from '@/components/ui/button'
+import { Tab } from '@/lib/types'
 
-function classNames(...classes) {
+function classNames(...classes: (string | false)[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-export function TabsMenu({ tabs }) {
+export function TabsMenu({ tabs }: { tabs: Tab[] }) {
   const [selectedTab, setSelectedTab] = useState(tabs[0])
 
-  const handleSelectTab = tab => {
+  const handleSelectTab = (tab: Tab) => {
     setSelectedTab(tab)
   }
 
   return (
     <div className="hidden sm:block">
-      {tabs.map((tab, index) => (
+      {tabs.map((tab: Tab, index: any) => (
         <Button
           key={index}
           variant="ghost"
@@ -30,7 +31,6 @@ export function TabsMenu({ tabs }) {
               tab === selectedTab ? 'text-gray-800' : 'hover:text-gray-800',
               'text-sm font-medium'
             )}
-            aria-current={tab.current ? 'page' : undefined}
           >
             {tab.name}
           </a>

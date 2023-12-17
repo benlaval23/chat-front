@@ -73,7 +73,7 @@ export function SourceMenu() {
             </React.Fragment>
           ))}
           <DropdownMenuSeparator />
-          <DropdownMenuItem className="flex items-center" onClick={() => console.log('new')} className="text-s">
+          <DropdownMenuItem className="text-s flex items-center" onClick={() => console.log('new')}>
             <IconPlus className="ml-1 align-center" />
             <div className="text-s p-2 ml-2 font-medium">New Source</div>
 
