@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils'
 import { TailwindIndicator } from '@/components/tailwind-indicator'
 import { Providers } from '@/components/providers'
 import { Header } from '@/components/header'
+import { type Tab } from '@/lib/types'
 
 export const metadata: Metadata = {
   title: {
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
 }
 
 
-const tabs = [
+const tabs: Tab[] = [
   { name: 'Flow'},
   { name: 'Settings'},
 ]

@@ -43,6 +43,9 @@ export interface ItemProps extends React.ComponentProps<'div'> {
   output?: object,
 }
 
+export interface Tab {
+  name: string,
+}
 
 export interface Source {
   name: string,

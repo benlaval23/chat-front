@@ -51,7 +51,7 @@ const output = {
 //   }
 // ]
 
-const tab: "Settings" | "Flow" = 'Settings'
+const tab: "Settings" | "Flow" = 'Flow'
 
 export default function IndexPage() {
   const id = nanoid()
