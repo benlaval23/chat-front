@@ -29,7 +29,7 @@ export async function POST(req: Request) {
     messages,
     functions, 
     function_call: "auto",
-  })
+  } as any)
 
   const initialResponseJson = await initialResponse.json()
   const initialResponseMessage = initialResponseJson?.choices?.[0]?.message;
