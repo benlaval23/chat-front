@@ -36,7 +36,7 @@ function Field({ item, value, variant }: FieldProps) {
         <Button
           key="See more"
           variant="link"
-          className="h-auto p-0 text-base flex justify-end items-center flex-grow "
+          className="flex h-auto grow items-center justify-end p-0 text-base "
         >
           See More
         </Button>

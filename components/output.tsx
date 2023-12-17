@@ -15,7 +15,7 @@ const renderOutput = (output: any) => {
 export function Output({ className, output }: OutputProps) {
   return (
     <>
-      <div className={cn('pb-[200px] mx-auto md:pt-10', className)}>
+      <div className={cn('mx-auto pb-[200px] md:pt-10', className)}>
         {renderOutput(output)}
       </div>
     </>

@@ -12,7 +12,7 @@ export function List({ className, output }: ListProps) {
 
   return (
     <div className={cn('rounded-lg border bg-background', className)}>
-      <div className="px-4 py-6 sm:px-6 bg-gray-50 ">
+      <div className="bg-gray-50 px-4 py-6 sm:px-6 ">
         <h1 className="mb-2 text-lg font-semibold">Users</h1>
         <p className="mt-1 max-w-2xl leading-normal text-muted-foreground">
           Here is a list of your users.

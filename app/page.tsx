@@ -60,9 +60,9 @@ export default function IndexPage() {
     <div className="flex justify-between">
       {(tabToShow === 'Flow') ? (
         <>
-          <Chat className="left-panel p-4 basis-1/2" id={id} output={output} />
+          <Chat className="left-panel basis-1/2 p-4" id={id} output={output} />
           <Output
-            className="right-panel p-4 basis-1/2"
+            className="right-panel basis-1/2 p-4"
             id={id}
             output={output}
           />

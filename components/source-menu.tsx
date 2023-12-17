@@ -44,7 +44,7 @@ export function SourceMenu() {
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" className="pl-0">
             <Image
-              className="w-6 h-6 transition-opacity duration-300 rounded-full select-none ring-1 ring-zinc-100/10 hover:opacity-80"
+              className="h-6 w-6 select-none rounded-full ring-1 ring-zinc-100/10 transition-opacity duration-300 hover:opacity-80"
               src={selectedSource.imagePath}
               alt={selectedSource.name}
               height={48}
@@ -61,21 +61,21 @@ export function SourceMenu() {
                 className="flex items-center"
               >
                 <Image
-                  className="w-6 h-6 transition-opacity align-center duration-300 rounded-full select-none ring-1 ring-zinc-100/10 hover:opacity-80"
+                  className="align-center h-6 w-6 select-none rounded-full ring-1 ring-zinc-100/10 transition-opacity duration-300 hover:opacity-80"
                   src={source.imagePath}
                   alt={source.name}
                   height={48}
                   width={48}
                 />
-                <div className="text-s p-2 ml-2 font-medium">{source.name}</div>
+                <div className="text-s ml-2 p-2 font-medium">{source.name}</div>
               </DropdownMenuItem>
               {index < sources.length - 1 && <DropdownMenuSeparator />}
             </React.Fragment>
           ))}
           <DropdownMenuSeparator />
           <DropdownMenuItem className="text-s flex items-center" onClick={() => console.log('new')}>
-            <IconPlus className="ml-1 align-center" />
-            <div className="text-s p-2 ml-2 font-medium">New Source</div>
+            <IconPlus className="align-center ml-1" />
+            <div className="text-s ml-2 p-2 font-medium">New Source</div>
 
           </DropdownMenuItem>
         </DropdownMenuContent>

@@ -43,26 +43,26 @@ export function Settings({ className }: SettingsProps) {
   return (
     <div className={className}>
       <div>
-        <h1 className="mb-8 mt-8 ml-2 text-lg font-semibold text-left">
+        <h1 className="my-8 ml-2 text-left text-lg font-semibold">
           Sources
         </h1>
       </div>
       {sources.map((source, index) => (
         <React.Fragment key={index}>
-          <div className="w-full mb-4 ">
+          <div className="mb-4 w-full ">
             <div
-              className="rounded-lg h-24 flex items-center justify-between pl-8 items-center border bg-background hover:bg-gray-100 p-2"
+              className="flex h-24 items-center justify-between rounded-lg border bg-background p-2 pl-8 hover:bg-gray-100"
               onClick={() => handleSourceClick(source)}
             >
               <div className="flex items-center">
                 <Image
-                  className="w-6 h-6 transition-opacity duration-300 rounded-full select-none ring-1 ring-zinc-100/10 hover:opacity-80"
+                  className="h-6 w-6 select-none rounded-full ring-1 ring-zinc-100/10 transition-opacity duration-300 hover:opacity-80"
                   src={source.imagePath}
                   alt={source.name}
                   height={48}
                   width={48}
                 />
-                <h1 className="text-lg p-2 ml-2 font-medium">{source.name}</h1>
+                <h1 className="ml-2 p-2 text-lg font-medium">{source.name}</h1>
               </div>
               <Button key="Configure" variant="link" size="lg">
                 Configure
@@ -73,9 +73,9 @@ export function Settings({ className }: SettingsProps) {
         </React.Fragment>
       ))}
       <React.Fragment>
-        <div className="w-full mb-4 ">
+        <div className="mb-4 w-full ">
           <div
-            className="rounded-lg h-24 flex items-center justify-end pl-8 items-center border bg-background hover:bg-gray-100 p-2"
+            className="flex h-24 items-center justify-end rounded-lg border bg-background p-2 pl-8 hover:bg-gray-100"
             onClick={() => newSource()}
           >
             <Button key="Configure" variant="link" size="lg">
