@@ -35,6 +35,7 @@ export function TabsMenu({ tabs }: { tabs: Tab[] }) {
             {tab.name}
           </a>
         </Button>
+        
       ))}
     </div>
   )

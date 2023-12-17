@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     { media: '(prefers-color-scheme: dark)', color: 'black' }
   ],
   icons: {
-    icon: '/favicon.ico',
+    icon: '/chat-front.png',
   },
   metadataBase: new URL("http://localhost:3000")
 }
