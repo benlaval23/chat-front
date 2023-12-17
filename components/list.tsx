@@ -33,7 +33,7 @@ export function List({ className, output }: ListProps) {
           </tr>
         </thead>
         <tbody className="divide-y divide-gray-200 bg-white">
-          {firstThreeData.map((item, index) => (
+          {firstThreeData.map((item: any, index: any) => (
             <>
               <tr key={index}>
                 {keys.map(key => (

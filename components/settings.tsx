@@ -20,14 +20,14 @@ const sources: Source[] = [
 ]
 
 export function Settings({ className }: SettingsProps) {
-  const [expandedSource, setExpandedSource] = useState(null)
+  const [expandedSource, setExpandedSource] = useState<Source | null>(null)
 
   const handleSourceClick = (source: Source) => {
     setExpandedSource(source)
   }
 
   const newSource = () => {
-    const newSource = { name: 'New Source', imagePath: '' }
+    const newSource: Source = { name: 'New Source', imagePath: '' }
     sources.push(newSource)
     setExpandedSource(newSource)
   }
