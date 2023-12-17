@@ -16,3 +16,35 @@ export type ServerActionResult<Result> = Promise<
       error: string
     }
 >
+
+export interface OutputProps extends React.ComponentProps<'div'> {
+  className?: string
+  output?: any
+}
+
+export interface ListProps extends React.ComponentProps<'div'> {
+  className?: string,
+  output?: any
+}
+
+
+export interface SettingsProps extends React.ComponentProps<'div'> {
+  className?: string
+}
+
+export interface SidePanelProps extends React.ComponentProps<'div'> {
+  source: Source
+  close: any
+  cancel: any
+}
+
+export interface ItemProps extends React.ComponentProps<'div'> {
+  className?: string,
+  output?: object,
+}
+
+
+export interface Source {
+  name: string,
+  imagePath: string
+}

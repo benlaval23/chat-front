@@ -2,11 +2,7 @@
 import { cn } from '@/lib/utils'
 import { camelCaseToCapitalized } from '@/lib/utils'
 import { Field } from '@/components/ui/field'
-
-export interface ItemProps extends React.ComponentProps<'div'> {
-  className?: string,
-  output?: object,
-}
+import { type ItemProps } from '@/lib/types'
 
 const objectName = 'Product'
 
@@ -27,10 +23,11 @@ export function Item({ className, output }: ItemProps) {
         </div>
         <div className="border-t border-gray-100">
           <dl className="divide-y divide-gray-100">
-            {Object.entries(output).map(([key, value]) => {
+            {Object.entries(output || {}).map(([key, value]) => {
               if (Array.isArray(value)) {
                 return (
                   <Field
+                    key={key}
                     item={camelCaseToCapitalized(key)}
                     value={value.join(', ')}
                     variant="array"
@@ -39,6 +36,7 @@ export function Item({ className, output }: ItemProps) {
               } else if (typeof value === 'object') {
                 return (
                   <Field
+                    key={key}
                     item={camelCaseToCapitalized(key)}
                     value={String(value)}
                     variant="object"
@@ -47,6 +45,7 @@ export function Item({ className, output }: ItemProps) {
               } else {
                 return (
                   <Field
+                    key={key}
                     item={camelCaseToCapitalized(key)}
                     value={String(value)}
                   />

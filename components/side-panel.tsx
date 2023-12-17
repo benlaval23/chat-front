@@ -2,15 +2,10 @@
 
 import { Button } from '@/components/ui/button'
 import { IconPlus } from '@/components/ui/icons'
+import { type SidePanelProps  } from '@/lib/types';
 
 
-export interface SidePanelProp extends React.ComponentProps<'div'> {
-  source: any
-  close: any
-  cancel: any
-}
-
-export function SidePanel({ source, close, cancel }: SidePanelProp) {
+export function SidePanel({ source, close, cancel }: SidePanelProps) {
   return (
     <div className="p-8 bg-gray-50 fixed right-0 top-16 w-10/12 h-full border border-t-0 transform shadow-xl transition-transform duration-500 ease-out z-10">
       <div className="flex mb-4 flex-row justify-between">

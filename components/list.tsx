@@ -2,11 +2,7 @@
 import { cn } from '@/lib/utils'
 import { camelCaseToCapitalized } from '@/lib/utils'
 import { OutputButton } from '@/components/ui/output-button'
-
-export interface ListProps extends React.ComponentProps<'div'> {
-  className?: string,
-  output?: any
-}
+import { type ListProps } from '@/lib/types'
 
 
 export function List({ className, output }: ListProps) {

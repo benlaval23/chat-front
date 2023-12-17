@@ -15,8 +15,9 @@ export function TabsMenu({ tabs }) {
 
   return (
     <div className="hidden sm:block">
-      {tabs.map(tab => (
+      {tabs.map((tab, index) => (
         <Button
+          key={index}
           variant="ghost"
           onClick={() => handleSelectTab(tab)}
           className={classNames(
@@ -25,7 +26,6 @@ export function TabsMenu({ tabs }) {
           )}
         >
           <a
-            key={tab.name}
             className={classNames(
               tab === selectedTab ? 'text-gray-800' : 'hover:text-gray-800',
               'text-sm font-medium'

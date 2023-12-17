@@ -19,7 +19,8 @@ export const metadata: Metadata = {
   ],
   icons: {
     icon: '/favicon.ico',
-  }
+  },
+  metadataBase: new URL("http://localhost:3000")
 }
 
 

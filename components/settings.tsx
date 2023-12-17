@@ -5,12 +5,10 @@ import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { IconArrowRight, IconPlus } from '@/components/ui/icons'
 import { SidePanel } from '@/components/side-panel'
+import { type SettingsProps, type Source  } from '@/lib/types';
 
-export interface SettingsProps extends React.ComponentProps<'div'> {
-  className?: string
-}
 
-const sources = [
+const sources: Source[] = [
   {
     name: 'Shopify',
     imagePath: '/../public/shopify.webp'
@@ -22,10 +20,9 @@ const sources = [
 ]
 
 export function Settings({ className }: SettingsProps) {
-  const [showPanel, setShowPanel] = useState(false)
-  const [expandedSource, setExpandedSource] = useState()
+  const [expandedSource, setExpandedSource] = useState(null)
 
-  const handleSourceClick = (source) => {
+  const handleSourceClick = (source: Source) => {
     setExpandedSource(source)
   }
 

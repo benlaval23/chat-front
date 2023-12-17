@@ -2,11 +2,7 @@
 import { cn } from '@/lib/utils';
 import { Item } from '@/components/item';
 import { List } from '@/components/list';
-
-export interface OutputProps extends React.ComponentProps<'div'> {
-  className?: string
-  output?: any
-}
+import { type OutputProps } from '@/lib/types'
 
 const renderOutput = (output: any) => {
   if (Array.isArray(output)) {
