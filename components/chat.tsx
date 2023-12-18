@@ -10,13 +10,15 @@ import { toast } from 'react-hot-toast'
 
 export interface ChatProps extends React.ComponentProps<'div'> {
   initialMessages?: Message[]
-  id?: string,
+  setOutput: any
+  setFlow: any
+  id?: string
   output?: any
 }
 
-export function Chat({ id, initialMessages, className, output }: ChatProps) {
-  
-  const { messages, append, reload, stop, isLoading, input, setInput } =
+export function Chat({ id, initialMessages, setFlow, setOutput, className, output }: ChatProps) {
+
+  const { messages, append, reload, stop, isLoading, input, setInput, data } =
     useChat({
       initialMessages,
       id,
@@ -24,9 +26,18 @@ export function Chat({ id, initialMessages, className, output }: ChatProps) {
         if (response.status === 401) {
           toast.error(response.statusText)
         }
+        console.log(response)
+      },
+      onFinish(message: any) {
       }
     })
 
+  const dataMessages = data as { message: string }[] | undefined;
+  if (dataMessages) {
+    setOutput(dataMessages[0])
+    setFlow(messages)
+
+  }
 
   return (
     <>
@@ -37,7 +48,7 @@ export function Chat({ id, initialMessages, className, output }: ChatProps) {
             <ChatScrollAnchor trackVisibility={isLoading} />
           </>
         ) : (
-          <EmptyScreen setInput={setInput}/>
+          <EmptyScreen setInput={setInput} />
         )}
       </div>
       <ChatPanel

@@ -1,11 +1,15 @@
+'use client';
+
 import { nanoid } from '@/lib/utils'
 import { Chat } from '@/components/chat'
 import { Output } from '@/components/output'
 import { Settings } from '@/components/settings'
+import { useState } from 'react'
+
 
 export const runtime = 'edge'
 
-const output = {
+const placeholderOutput = {
   id: '12',
   name: 'Item 1',
   description:
@@ -51,16 +55,20 @@ const output = {
 //   }
 // ]
 
-const tabToShow: "Settings" | "Flow" = 'Settings'
+const tabToShow: "Settings" | "Flow" = 'Flow'
 
 export default function IndexPage() {
+    const [output, setOutput] = useState(null)
+    const [flow, setFlow] = useState([])
+
+
   const id = nanoid()
 
   return (
-    <div className="flex justify-between">
+    <div className="flex justify-between pb-32">
       {(tabToShow === 'Flow') ? (
         <>
-          <Chat className="left-panel basis-1/2 p-4" id={id} output={output} />
+          <Chat className="left-panel basis-1/2 p-4" initialMessages={flow} setFlow={setFlow} flow={flow} setOutput={setOutput} id={id} output={output} />
           <Output
             className="right-panel basis-1/2 p-4"
             id={id}

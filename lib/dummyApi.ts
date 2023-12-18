@@ -4,7 +4,9 @@ export const getProductsList = async () => {
   try {
     const response = await fetch(`${API_BASE_URL}/products`);
     if (!response.ok) throw new Error('Network response was not ok.');
-    return await response.json();
+    const json = await response.json();
+    const products = json.products.slice(0, 10);
+    return products
   } catch (error) {
     console.error('Error fetching products list:', error);
     throw error;
@@ -32,7 +34,9 @@ export const searchProducts = async (args: string) => {
   try {
     const response = await fetch(`${API_BASE_URL}/products/search?q=${query}`);
     if (!response.ok) throw new Error('Network response was not ok.');
-    return await response.json();
+    const json = await response.json();
+    const products = json.products.slice(0, 10);
+    return products
   } catch (error) {
     console.error(`Error searching for products with query "${query}":`, error);
     throw error;
@@ -60,7 +64,10 @@ export const getUsersList = async () => {
   try {
     const response = await fetch(`${API_BASE_URL}/users`);
     if (!response.ok) throw new Error('Network response was not ok.');
-    return await response.json();
+    const json = await response.json();
+    const users = json.users.slice(0, 10);
+    console.log('Users list:', users);
+    return users
   } catch (error) {
     console.error('Error fetching users list:', error);
     throw error;

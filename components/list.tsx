@@ -6,6 +6,7 @@ import { type ListProps } from '@/lib/types'
 
 
 export function List({ className, output }: ListProps) {
+
   const length = output.length
   const firstThreeData = output.slice(0, 3)
   const keys = firstThreeData.length > 0 ? Object.keys(firstThreeData[0]) : []

@@ -1,4 +1,5 @@
-import { OpenAIStream, StreamingTextResponse } from 'ai'
+import { kv } from '@vercel/kv'
+import { OpenAIStream, StreamingTextResponse, experimental_StreamData, experimental_onFunctionCall } from 'ai'
 import { Configuration, OpenAIApi } from 'openai-edge'
 import { functions, runFunction } from './functions'
 import { auth } from '@/auth'
@@ -23,7 +24,6 @@ export async function POST(req: Request) {
     })
   }
 
-
   const initialResponse = await openai.createChatCompletion({
     model: 'gpt-3.5-turbo',
     messages,
@@ -41,8 +41,6 @@ export async function POST(req: Request) {
     const { name, arguments: args } = initialResponseMessage.function_call
     const functionResponse = await runFunction(name, args)
 
-    console.log(`Function Response: ${functionResponse}`)
-
     finalReponse = await openai.createChatCompletion({
       model: 'gpt-3.5-turbo',
       stream: true,
@@ -52,17 +50,47 @@ export async function POST(req: Request) {
         {
           role: 'function',
           name: initialResponseMessage.function_call.name,
-          content: JSON.stringify(functionResponse)
+          content: 'IMPORTANT: The user can now see the data that they have requested from the function through another tool. Please tell the user that the data hase been fetched.'
         },
       ],
     });
 
-    
-
-    const stream = OpenAIStream(finalReponse)
-    return new StreamingTextResponse(stream)
+    const data = new experimental_StreamData();
+    const stream = OpenAIStream(finalReponse, {
+      async onFinal(message) {
+        const title = json.messages[0].content.substring(0, 100)
+        const id = json.id ?? nanoid()
+        const createdAt = Date.now()
+        const path = `/chat/${id}`
+        const payload = {
+          id,
+          title,
+          userId,
+          createdAt,
+          path,
+          messages: [
+            ...messages,
+            {
+              content: message,
+              role: 'assistant'
+            }
+          ]
+        }
+        await kv.hmset(`chat:${id}`, payload)
+        await kv.zadd(`user:chat:${userId}`, {
+          score: createdAt,
+          member: `chat:${id}`
+        })
+          data.append(functionResponse); 
+          data.close(); 
+       },
+       experimental_streamData: true, 
+    });
+    return new StreamingTextResponse(stream, {}, data);
 
   } else { 
+
+
     const chunks = initialResponseMessage.content.split(" ")
     const stream = new ReadableStream({
       async start(controller) {
